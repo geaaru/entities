@@ -5,8 +5,10 @@ REVISION := $(shell git rev-parse --short HEAD || echo dev)
 VERSION := $(shell git describe --tags || echo $(REVISION))
 VERSION := $(shell echo $(VERSION) | sed -e 's/^v//g')
 ITTERATION := $(shell date +%s)
-BUILD_PLATFORMS ?= -osarch="linux/amd64" -osarch="linux/386" -osarch="linux/arm"
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+
+override LDFLAGS += -X "github.com/geaaru/entities/pkg/converter.BuildTime=$(shell date -u '+%Y-%m-%d %I:%M:%S %Z')"
+override LDFLAGS += -X "github.com/geaaru/entities/pkg/converter.BuildCommit=$(shell git rev-parse HEAD)"
 
 .PHONY: all
 all: deps build
@@ -17,13 +19,17 @@ fmt:
 
 .PHONY: test
 test:
-	GO111MODULE=off go get github.com/onsi/ginkgo/ginkgo
+	GO111MODULE=on go get github.com/onsi/ginkgo/v2/ginkgo
 	GO111MODULE=off go get github.com/onsi/gomega/...
-	ginkgo -race -r ./...
+	ginkgo -r -race -flake-attempts 3 ./...
 
 .PHONY: coverage
 coverage:
 	go test ./... -race -coverprofile=coverage.txt -covermode=atomic
+
+.PHONY: test-coverage
+test-coverage:
+	scripts/ginkgo.coverage.sh --codecov
 
 .PHONY: help
 help:
@@ -42,18 +48,13 @@ deps:
 	go env
 	# Installing dependencies...
 	GO111MODULE=off go get golang.org/x/lint/golint
-	GO111MODULE=off go get github.com/mitchellh/gox
 	GO111MODULE=off go get golang.org/x/tools/cmd/cover
-	GO111MODULE=off go get github.com/onsi/ginkgo/ginkgo
+	GO111MODULE=on go get github.com/onsi/ginkgo/v2/ginkgo
 	GO111MODULE=off go get github.com/onsi/gomega/...
 
 .PHONY: build
 build:
-	CGO_ENABLED=0 go build
-
-.PHONY: gox-build
-gox-build:
-	CGO_ENABLED=0 gox $(BUILD_PLATFORMS) -output="release/$(NAME)-$(VERSION)-{{.OS}}-{{.Arch}}"
+	CGO_ENABLED=0 go build -ldflags '$(LDFLAGS)'
 
 .PHONY: lint
 lint:
@@ -63,5 +64,8 @@ lint:
 vendor:
 	go mod vendor
 
-.PHONY: multiarch-build
-multiarch-build: gox-build
+.PHONY: goreleaser-snapshot
+goreleaser-snapshot:
+	rm -rf dist/ || true
+	goreleaser release --debug --skip-publish  --skip-validate --snapshot
+
