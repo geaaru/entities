@@ -3,8 +3,10 @@ github.com/inconshreveable/mousetrap
 # github.com/mattn/go-runewidth v0.0.9
 github.com/mattn/go-runewidth
 # github.com/olekukonko/tablewriter v0.0.5
+## explicit
 github.com/olekukonko/tablewriter
 # github.com/onsi/ginkgo/v2 v2.0.0
+## explicit
 github.com/onsi/ginkgo/v2
 github.com/onsi/ginkgo/v2/config
 github.com/onsi/ginkgo/v2/formatter
@@ -16,6 +18,7 @@ github.com/onsi/ginkgo/v2/internal/testingtproxy
 github.com/onsi/ginkgo/v2/reporters
 github.com/onsi/ginkgo/v2/types
 # github.com/onsi/gomega v1.17.0
+## explicit
 github.com/onsi/gomega
 github.com/onsi/gomega/format
 github.com/onsi/gomega/internal
@@ -26,18 +29,23 @@ github.com/onsi/gomega/matchers/support/goraph/node
 github.com/onsi/gomega/matchers/support/goraph/util
 github.com/onsi/gomega/types
 # github.com/phayes/permbits v0.0.0-20190612203442-39d7c581d2ee
+## explicit
 github.com/phayes/permbits
 # github.com/pkg/errors v0.9.1
+## explicit
 github.com/pkg/errors
 # github.com/spf13/cobra v1.3.0
+## explicit
 github.com/spf13/cobra
 # github.com/spf13/pflag v1.0.5
 github.com/spf13/pflag
 # github.com/tredoe/osutil v1.0.5
+## explicit
 github.com/tredoe/osutil/user/crypt
 github.com/tredoe/osutil/user/crypt/common
 github.com/tredoe/osutil/user/crypt/sha512_crypt
 # github.com/willdonnelly/passwd v0.0.0-20141013001024-7935dab3074c
+## explicit
 github.com/willdonnelly/passwd
 # golang.org/x/net v0.0.0-20210813160813-60bc85c4be6d
 golang.org/x/net/html
@@ -65,4 +73,5 @@ golang.org/x/text/language
 golang.org/x/text/runes
 golang.org/x/text/transform
 # gopkg.in/yaml.v2 v2.4.0
+## explicit
 gopkg.in/yaml.v2
