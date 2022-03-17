@@ -17,7 +17,7 @@
 package entities_test
 
 import (
-	. "github.com/mudler/entities/pkg/entities"
+	. "github.com/geaaru/entities/pkg/entities"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"

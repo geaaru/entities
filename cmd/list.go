@@ -24,7 +24,7 @@ import (
 	"strconv"
 	"time"
 
-	. "github.com/mudler/entities/pkg/entities"
+	. "github.com/geaaru/entities/pkg/entities"
 
 	tablewriter "github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
