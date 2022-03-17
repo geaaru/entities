@@ -24,10 +24,29 @@ import (
 
 var entityFile string
 
+const (
+	ENTITIES_VERSION = `0.6.6`
+)
+
+var (
+	BuildTime      string
+	BuildCommit    string
+	BuildGoVersion string
+)
+
+func version() string {
+	ans := fmt.Sprintf("%s-g%s %s", ENTITIES_VERSION, BuildCommit, BuildTime)
+	if BuildGoVersion != "" {
+		ans += " " + BuildGoVersion
+	}
+	return ans
+}
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "entities",
-	Short: "Modern go identity manager for UNIX systems",
+	Use:     "entities",
+	Version: version(),
+	Short:   "Modern go identity manager for UNIX systems",
 	Long: `Entities is a modern groups and user manager for Unix system. It allows to create/delete user and groups 
 in a system given policies following the entities yaml format.
 
