@@ -1,4 +1,4 @@
-module github.com/mudler/entities
+module github.com/geaaru/entities
 
 go 1.17
 
