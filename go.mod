@@ -8,7 +8,8 @@ require (
 	github.com/onsi/gomega v1.18.1
 	github.com/phayes/permbits v0.0.0-20190612203442-39d7c581d2ee
 	github.com/pkg/errors v0.9.1
-	github.com/spf13/cobra v1.3.0
+	github.com/spf13/cobra v1.4.0
+	github.com/spf13/viper v1.10.0 // indirect
 	github.com/tredoe/osutil v1.0.5
 	github.com/willdonnelly/passwd v0.0.0-20141013001024-7935dab3074c
 	golang.org/x/net v0.0.0-20220225172249-27dd8689420f // indirect
