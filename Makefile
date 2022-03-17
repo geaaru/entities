@@ -6,9 +6,11 @@ VERSION := $(shell git describe --tags || echo $(REVISION))
 VERSION := $(shell echo $(VERSION) | sed -e 's/^v//g')
 ITTERATION := $(shell date +%s)
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+GOLANG_VERSION=$(shell go env GOVERSION)
 
-override LDFLAGS += -X "github.com/geaaru/entities/pkg/converter.BuildTime=$(shell date -u '+%Y-%m-%d %I:%M:%S %Z')"
-override LDFLAGS += -X "github.com/geaaru/entities/pkg/converter.BuildCommit=$(shell git rev-parse HEAD)"
+override LDFLAGS += -X "github.com/geaaru/entities/cmd.BuildTime=$(shell date -u '+%Y-%m-%d %I:%M:%S %Z')"
+override LDFLAGS += -X "github.com/geaaru/entities/cmd.BuildCommit=$(shell git rev-parse HEAD)"
+override LDFLAGS += -X "github.com/geaaru/entities/cmd.BuildGoVersion=$(GOLANG_VERSION)"
 
 .PHONY: all
 all: deps build
@@ -69,3 +71,6 @@ goreleaser-snapshot:
 	rm -rf dist/ || true
 	goreleaser release --debug --skip-publish  --skip-validate --snapshot
 
+.PHONY: run-tasks
+run-tasks: build
+	@cd testing/tasks && lxd-compose a entities-test-ubuntu --destroy
