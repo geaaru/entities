@@ -69,7 +69,7 @@ vendor:
 .PHONY: goreleaser-snapshot
 goreleaser-snapshot:
 	rm -rf dist/ || true
-	goreleaser release --debug --skip-publish  --skip-validate --snapshot
+	GOVERSION=$(GOLANG_VERSION) goreleaser release --debug --skip-publish  --skip-validate --snapshot
 
 .PHONY: run-tasks
 run-tasks: build
