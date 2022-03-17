@@ -15,7 +15,7 @@
 
 package main
 
-import "github.com/mudler/entities/cmd"
+import "github.com/geaaru/entities/cmd"
 
 func main() {
 	cmd.Execute()

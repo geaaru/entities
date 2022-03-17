@@ -15,7 +15,7 @@
 package cmd
 
 import (
-	. "github.com/mudler/entities/pkg/entities"
+	. "github.com/geaaru/entities/pkg/entities"
 	"github.com/spf13/cobra"
 )
 
