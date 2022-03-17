@@ -2,3 +2,4 @@ release/
 /entities
 *.swp
 *.swo
+dist
