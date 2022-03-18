@@ -105,10 +105,10 @@ func groupGetFreeGid(path string) (int, error) {
 }
 
 type Group struct {
-	Name     string `yaml:"group_name"`
-	Password string `yaml:"password"`
-	Gid      *int   `yaml:"gid"`
-	Users    string `yaml:"users"`
+	Name     string `yaml:"group_name" json:"group_name"`
+	Password string `yaml:"password" json:"password"`
+	Gid      *int   `yaml:"gid" json:"gid"`
+	Users    string `yaml:"users" json:"users"`
 }
 
 func (u Group) GetKind() string { return GroupKind }

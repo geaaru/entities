@@ -71,15 +71,15 @@ func copyBytes(x []byte) []byte {
 }
 
 type Shadow struct {
-	Username       string `yaml:"username"`
-	Password       string `yaml:"password"`
-	LastChanged    string `yaml:"last_changed"`
-	MinimumChanged string `yaml:"minimum_changed"`
-	MaximumChanged string `yaml:"maximum_changed"`
-	Warn           string `yaml:"warn"`
-	Inactive       string `yaml:"inactive"`
-	Expire         string `yaml:"expire"`
-	Reserved       string `yaml:"reserved"`
+	Username       string `yaml:"username" json:"username"`
+	Password       string `yaml:"password" json:"password"`
+	LastChanged    string `yaml:"last_changed" json:"last_changed"`
+	MinimumChanged string `yaml:"minimum_changed" json:"minimum_changed"`
+	MaximumChanged string `yaml:"maximum_changed" json:"maximum_changed"`
+	Warn           string `yaml:"warn" json:"warn"`
+	Inactive       string `yaml:"inactive" json:"inactive"`
+	Expire         string `yaml:"expire" json:"expire"`
+	Reserved       string `yaml:"reserved" json:"reserved"`
 }
 
 func (u Shadow) GetKind() string { return ShadowKind }

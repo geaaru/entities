@@ -70,10 +70,10 @@ func parseGShadowLine(line string) (string, GShadow, error) {
 }
 
 type GShadow struct {
-	Name           string `yaml:"name"`
-	Password       string `yaml:"password"`
-	Administrators string `yaml:"administrators"`
-	Members        string `yaml:"members"`
+	Name           string `yaml:"name" json:"name"`
+	Password       string `yaml:"password" json:"password"`
+	Administrators string `yaml:"administrators" json:"administrators"`
+	Members        string `yaml:"members" json:"members"`
 }
 
 func (u GShadow) GetKind() string { return GShadowKind }

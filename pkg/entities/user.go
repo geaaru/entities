@@ -58,14 +58,14 @@ func userGetFreeUid(path string) (int, error) {
 }
 
 type UserPasswd struct {
-	Username string `yaml:"username"`
-	Password string `yaml:"password"`
-	Uid      int    `yaml:"uid"`
-	Gid      int    `yaml:"gid"`
-	Group    string `yaml:"group"`
-	Info     string `yaml:"info"`
-	Homedir  string `yaml:"homedir"`
-	Shell    string `yaml:"shell"`
+	Username string `yaml:"username" json:"username"`
+	Password string `yaml:"password" json:"password"`
+	Uid      int    `yaml:"uid" json:"uid"`
+	Gid      int    `yaml:"gid" json:"gid"`
+	Group    string `yaml:"group" json:"group"`
+	Info     string `yaml:"info" json:"info"`
+	Homedir  string `yaml:"homedir" json:"homedir"`
+	Shell    string `yaml:"shell" json:"shell"`
 }
 
 func ParseUser(path string) (map[string]UserPasswd, error) {
