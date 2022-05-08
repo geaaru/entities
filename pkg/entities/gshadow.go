@@ -31,6 +31,15 @@ func GShadowDefault(s string) string {
 
 // ParseGShadow opens the file and parses it into a map from usernames to Entries
 func ParseGShadow(path string) (map[string]GShadow, error) {
+	_, err := os.Stat(path)
+	if err != nil {
+		ans := make(map[string]GShadow, 0)
+		if os.IsNotExist(err) {
+			return ans, nil
+		}
+		return ans, errors.Wrap(err, "Failed check file "+path)
+	}
+
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, err
@@ -130,7 +139,7 @@ func (u GShadow) Create(s string) error {
 			return errors.Wrap(err, "Could not read")
 		}
 	} else if os.IsNotExist(err) {
-		f, err = os.OpenFile(s, os.O_RDWR|os.O_CREATE, 0400)
+		f, err = os.OpenFile(s, os.O_RDWR|os.O_CREATE, 0644)
 		if err != nil {
 			return errors.Wrap(err, "Could not create the file")
 		}

@@ -32,6 +32,15 @@ func GroupsDefault(s string) string {
 
 // ParseGroup opens the file and parses it into a map from usernames to Entries
 func ParseGroup(path string) (map[string]Group, error) {
+	_, err := os.Stat(path)
+	if err != nil {
+		ans := make(map[string]Group, 0)
+		if os.IsNotExist(err) {
+			return ans, nil
+		}
+		return ans, errors.Wrap(err, "Failed check file "+path)
+	}
+
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, err
@@ -214,7 +223,7 @@ func (u Group) Create(s string) error {
 		}
 
 	} else if os.IsNotExist(err) {
-		f, err = os.OpenFile(s, os.O_RDWR|os.O_CREATE, 0400)
+		f, err = os.OpenFile(s, os.O_RDWR|os.O_CREATE, 0644)
 		if err != nil {
 			return errors.Wrap(err, "Could not create the file")
 		}

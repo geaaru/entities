@@ -71,6 +71,16 @@ type UserPasswd struct {
 func ParseUser(path string) (map[string]UserPasswd, error) {
 	ans := make(map[string]UserPasswd, 0)
 
+	// Check if file exists and avoid to call ParseFile
+	// if the file is not present.
+	_, err := os.Stat(path)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return ans, nil
+		}
+		return ans, errors.Wrap(err, "Failed check file "+path)
+	}
+
 	current, err := passwd.ParseFile(path)
 	if err != nil {
 		return ans, errors.Wrap(err, "Failed parsing passwd")
@@ -213,7 +223,7 @@ func (u UserPasswd) Create(s string) error {
 		}
 
 	} else if os.IsNotExist(err) {
-		f, err = os.OpenFile(s, os.O_RDWR|os.O_CREATE, 0400)
+		f, err = os.OpenFile(s, os.O_RDWR|os.O_CREATE, 0644)
 		if err != nil {
 			return errors.Wrap(err, "Could not create the file")
 		}
