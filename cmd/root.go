@@ -14,7 +14,7 @@ import (
 var entityFile string
 
 const (
-	ENTITIES_VERSION = `0.9.0`
+	ENTITIES_VERSION = `0.9.1`
 )
 
 var (
