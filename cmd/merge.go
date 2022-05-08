@@ -163,8 +163,9 @@ func mergeAllEntities(store, currentStore *EntitiesStore,
 }
 
 var mergeCmd = &cobra.Command{
-	Use:   "merge",
-	Short: "Merge one or more entities.",
+	Use:          "merge",
+	SilenceUsage: true,
+	Short:        "Merge one or more entities.",
 	Long: `
 Merge one or more entities read from a specified directory to
 the existing system. If the entity is already present it merges
