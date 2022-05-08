@@ -145,11 +145,24 @@ func listGroups(file, order, filter string, jsonOutput, groupHasShadow bool, spe
 			if order == "id" {
 				gName = mGids[group].Name
 			}
+
+			g, ok := mGroups[gName]
+
+			if !ok {
+				fmt.Println("Something go wrong for group " + group)
+				continue
+			}
+
+			gid := -1
+			if g.Gid != nil {
+				gid = *g.Gid
+			}
+
 			row := []string{
-				mGroups[gName].Name,
-				mGroups[gName].Password,
-				fmt.Sprintf("%d", *mGroups[gName].Gid),
-				mGroups[gName].Users,
+				g.Name,
+				g.Password,
+				fmt.Sprintf("%d", gid),
+				g.Users,
 			}
 
 			if groupHasShadow {
