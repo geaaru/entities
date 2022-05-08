@@ -302,6 +302,9 @@ func (u Group) Apply(s string, safe bool) error {
 		}
 
 		if _, ok := current[u.Name]; ok {
+			// POST: The existing group file contains the
+			// required group
+
 			input, err := ioutil.ReadFile(s)
 			if err != nil {
 				return errors.Wrap(err, "Could not read input file")
@@ -347,6 +350,14 @@ func (u Group) Apply(s string, safe bool) error {
 			}
 
 		} else {
+
+			// POST: The existing groups file doesn't contain
+			//       the group name selected.
+			if u.Gid == nil {
+				// NOTE: Pass err nil to errors.Wrap generate a nil error.
+				//       I use errors.New in this case.
+				return errors.New("Required group " + u.Name + " is not present. I can't retrieve id.")
+			}
 			return u.Create(s)
 		}
 	} else if os.IsNotExist(err) {
