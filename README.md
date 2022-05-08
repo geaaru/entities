@@ -173,10 +173,11 @@ or from specified files:
 
 ```shell
 $> entities dump -t ./catalog --groups-file /tmp/groups --gshadow-file /tmp/gshadow --shadow-file /tmp/shadow --users-file /tmp/passwd
+```
 
 ### Merge entities
 
-The idea of the `merge` subcommand is to use an existing **catalog** and then merge entities if they aren't yet present.
+The idea of the `merge` subcommand is to use an existing catalog and then merge entities if they aren't yet present.
 
 ```shell
 $> # merge all entities defined on a catalog on /etc/passwd,/etc/groups,/etc/shadow,/etc/gshadow
