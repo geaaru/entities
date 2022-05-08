@@ -109,3 +109,83 @@ users: "one,two,tree"
 
 `entities` will searching for the first available range specified by the env variable
 `ENTITY_DYNAMIC_RANGE` or by the default the range `500-999`.
+
+### List entities
+
+To read and list entities available in a system (users, groups, shadow, gshadow):
+
+```shell
+$> entities list users
++----------------+--------------------+---------+----------+--------------------------------+--------------------------+----------------+
+|    USERNAME    | ENCRYPTED PASSWORD | USER ID | GROUP ID |              INFO              |         HOMEDIR          |     SHELL      |
++----------------+--------------------+---------+----------+--------------------------------+--------------------------+----------------+
+| adm            | x                  |       3 |        4 | adm                            | /var/adm                 | /bin/false     |
+| apache         | x                  |      81 |       81 | added by portage for apache    | /var/www                 | /sbin/nologin  |
+| arangodb3      | x                  |    1001 |     1006 |                                | /home/arangodb3          | /bin/bash      |
+| avahi          | x                  |     104 |      104 | added by portage for avahi     | /dev/null                | /sbin/nologin  |
+| bin            | x                  |       1 |        1 | bin                            | /bin                     | /bin/false     |
+...
+```
+
+`entities` by default read files `/etc/passwd`, `/etc/groups`, `/etc/gshadow` and `/etc/shadow.
+
+To read entities from a different file use `-f|--file`:
+
+```shell
+$> entities list users --file /tmp/passwd
+
+$> # Read list of available groups
+$> entities list groups
+
+$> # Read list of available groups order by id
+$> entities list groups -s id
+
+$> # Read list of available groups order by name
+$> entities list groups -s name
+
+$> # Read list of gshadow entries
+$> entities list gshadow
+
+$> # Read list of shadow entries
+$> entities list shadow
+```
+
+`entities` permits to list entities defined in YAML from a directory too:
+
+```shell
+$> entities list users --specs-dir /entities-catalog
+```
+
+### Dump entities
+
+`entities` permits to generate `entities` specs from existing rootfs:
+
+```shell
+$> entities dump -t ./catalog
+Creating 41 users under the directory catalog/users
+Creating 70 groups under the directory catalog/groups
+Creating 41 shadows under the directory catalog/shadows
+Creating 13 gshadows under the directory catalog/gshadows
+All done.
+```
+
+or from specified files:
+
+```shell
+$> entities dump -t ./catalog --groups-file /tmp/groups --gshadow-file /tmp/gshadow --shadow-file /tmp/shadow --users-file /tmp/passwd
+
+### Merge entities
+
+The idea of the `merge` subcommand is to use an existing **catalog** and then merge entities if they aren't yet present.
+
+```shell
+$> # merge all entities defined on a catalog on /etc/passwd,/etc/groups,/etc/shadow,/etc/gshadow
+$> entities merge --specs-dir ./my-catalog -a
+
+$> # merge all entities defined on a catalog on custom files
+$> entities merge --specs-dir ./my-catalog -a --groups-file /tmp/groups --gshadow-file /tmp/gshadow --users-file /tmp/passwd --shadow-file /tmp/shadow
+
+$> # merge all entry related with a specific entity defined on a catalog on /etc/passwd,/etc/groups,/etc/shadow,/etc/gshadow.
+$> # On the example is created the group mongodb
+$> entities merge --specs-dir ./my-catalog -e mongodb
+```
