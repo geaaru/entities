@@ -50,7 +50,10 @@ func (s *EntitiesStore) Load(dir string) error {
 
 		entity, err := p.ReadEntity(filepath.Join(dir, file.Name()))
 		if err == nil {
-			s.AddEntity(entity)
+			err = s.AddEntity(entity)
+			if err != nil {
+				return err
+			}
 		}
 	}
 
