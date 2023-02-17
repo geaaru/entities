@@ -1,6 +1,6 @@
 /*
-	Copyright © 2022 Funtoo Macaroni OS Linux
-	See AUTHORS and LICENSE for the license details and contributors.
+Copyright © 2022-2023 Funtoo Macaroni OS Linux
+See AUTHORS and LICENSE for the license details and contributors.
 */
 package cmd
 
@@ -14,7 +14,7 @@ import (
 var entityFile string
 
 const (
-	ENTITIES_VERSION = `0.9.1`
+	ENTITIES_VERSION = `0.9.2`
 )
 
 var (
@@ -39,11 +39,16 @@ var rootCmd = &cobra.Command{
 	Long: `Entities is a modern groups and user manager for Unix system. It allows to create/delete user and groups 
 in a system given policies following the entities yaml format.
 
-For example:
+For example on working at low-level these are the methos:
 
 	$> entities apply <entity.yaml>
 	$> entities delete <entity.yaml>
 	$> entities create <entity.yaml>
+
+Normally, it's a good idea instead using this command with a catalog:
+
+	$> entities merge -s /usr/share/macaroni/entities -e sshd
+
 `,
 }
 
