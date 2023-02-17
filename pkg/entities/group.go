@@ -17,7 +17,7 @@ import (
 
 	permbits "github.com/phayes/permbits"
 	"github.com/pkg/errors"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 func GroupsDefault(s string) string {

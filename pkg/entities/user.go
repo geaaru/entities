@@ -1,6 +1,6 @@
 /*
-	Copyright © 2022 Funtoo Macaroni OS Linux
-	See AUTHORS and LICENSE for the license details and contributors.
+Copyright © 2022 Funtoo Macaroni OS Linux
+See AUTHORS and LICENSE for the license details and contributors.
 */
 package entities
 
@@ -15,7 +15,7 @@ import (
 	permbits "github.com/phayes/permbits"
 	"github.com/pkg/errors"
 	passwd "github.com/willdonnelly/passwd"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 func UserDefault(s string) string {

@@ -21,7 +21,7 @@ import (
 
 	permbits "github.com/phayes/permbits"
 	"github.com/pkg/errors"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 )
 
 // ParseShadow opens the file and parses it into a map from usernames to Entries
