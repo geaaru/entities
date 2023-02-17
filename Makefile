@@ -50,13 +50,17 @@ deps:
 	go env
 	# Installing dependencies...
 	GO111MODULE=off go get golang.org/x/lint/golint
-	GO111MODULE=off go get golang.org/x/tools/cmd/cover
 	GO111MODULE=on go get github.com/onsi/ginkgo/v2/ginkgo
 	GO111MODULE=off go get github.com/onsi/gomega/...
 
 .PHONY: build
 build:
 	CGO_ENABLED=0 go build -ldflags '$(LDFLAGS)'
+
+.PHONY: build-small
+build-small:
+	@$(MAKE) LDFLAGS+="-s -w" build
+	upx --brute -1 $(NAME)
 
 .PHONY: lint
 lint:
