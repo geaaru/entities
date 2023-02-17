@@ -61,7 +61,7 @@ build:
 .PHONY: build-small
 build-small:
 	@$(MAKE) LDFLAGS+="-s -w" build
-	upx --brute -1 $(NAME)
+	upx --brute --best --lzma $(NAME)
 
 .PHONY: lint
 lint:
