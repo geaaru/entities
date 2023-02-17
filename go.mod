@@ -1,9 +1,9 @@
 module github.com/geaaru/entities
 
-go 1.17
+go 1.18
 
 require (
-	github.com/inconshreveable/mousetrap v1.0.0 // indirect
+	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	github.com/olekukonko/tablewriter v0.0.5
@@ -11,7 +11,7 @@ require (
 	github.com/onsi/gomega v1.19.0
 	github.com/phayes/permbits v0.0.0-20190612203442-39d7c581d2ee
 	github.com/pkg/errors v0.9.1
-	github.com/spf13/cobra v1.4.0
+	github.com/spf13/cobra v1.6.1
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/tredoe/osutil v1.0.5
 	github.com/willdonnelly/passwd v0.0.0-20141013001024-7935dab3074c
