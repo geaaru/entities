@@ -11,8 +11,8 @@ require (
 	github.com/onsi/gomega v1.26.0
 	github.com/phayes/permbits v0.0.0-20190612203442-39d7c581d2ee
 	github.com/pkg/errors v0.9.1
-	github.com/spf13/cobra v1.6.1
-	github.com/spf13/pflag v1.0.5 // indirect
+	github.com/spf13/cobra v1.10.1
+	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/tredoe/osutil v1.0.5
 	github.com/willdonnelly/passwd v0.0.0-20141013001024-7935dab3074c
 	golang.org/x/net v0.6.0 // indirect
