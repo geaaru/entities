@@ -75,6 +75,8 @@ github.com/tredoe/fileutil v1.0.0/go.mod h1:PBayWPFCURwkmW0u6E8E8C6Jtd9ZzWq/U1iM
 github.com/tredoe/goutil v0.0.0-20200111155331-68cefb6d3cdc/go.mod h1:dp4VPOLeEFYbsf1ikgd+uytWDnpCdMiTHMg6mh7hHuQ=
 github.com/tredoe/osutil v1.0.5 h1:mfXjHBJU46GoJDOUcHyV895fauUuVikR9U8yRbGBrqw=
 github.com/tredoe/osutil v1.0.5/go.mod h1:DDO4G4Mwys6NJi5JmEVLnfFbQWIfVVri8L6HuXb/v98=
+github.com/tredoe/osutil v1.5.0 h1:UGVxbbHRoZi8xXVmbNZ2vgG6XoJ15ndE4LniiQ3rJKg=
+github.com/tredoe/osutil v1.5.0/go.mod h1:TEzphzUUunysbdDRfdOgqkg10POQbnfIPV50ynqOfIg=
 github.com/willdonnelly/passwd v0.0.0-20141013001024-7935dab3074c h1:4+NVyrLUuEmvE3r3Xst7gPuKhAP6X04ACpMmPvtK0M0=
 github.com/willdonnelly/passwd v0.0.0-20141013001024-7935dab3074c/go.mod h1:xcvfY9pOw6s4wyrhilFSbMthL6KzgrfCIETHHUOQ/fQ=
 go.uber.org/automaxprocs v1.6.0 h1:O3y2/QNTOdbF+e/dpXNNW7Rx2hZ4sTIPyybbxyNqTUs=
